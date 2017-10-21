@@ -19,6 +19,7 @@
     "menu": [
       {
         "label": "Travellers Club",
+        "block": ["Anton's letter"],
         "time": [0,-1],
         "help": [
           "You promised to visit your friend Josiah.",

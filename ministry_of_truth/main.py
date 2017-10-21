@@ -20,6 +20,14 @@ import time
 DISPLAY_SIZE = 1024, 650
 FONT = "Sans" # Georgia
 MAX_LINES = 7
+BLOTTER_COLOURS = (
+    (102, 204, 255),
+    (255, 153, 204),
+    (204, 255, 153),
+    (153, 255, 204),
+    (204, 153, 255),
+    (255, 204, 153),
+)
 
 def load_image(name, colorkey=None):
     fullname = os.path.join('data', name)
@@ -57,7 +65,7 @@ class Progress:
             if thing.show
         ]
         self.blotter = [
-            line.format(hours_left = self.game_time)
+            (BLOTTER_COLOURS[0], line.format(hours_left = self.game_time))
             for line in game_map.scene.blotter
         ]
         self.stale = True
@@ -73,6 +81,7 @@ class Model:
     def __init__(self):
         self.game_map = GameMap("main.json")
         self.progress = Progress(self.game_map)
+        self.blotter_colour_index = 0
         
     def update(self):
         self.progress.update()
@@ -103,7 +112,11 @@ class Model:
                 pass # optional attribute
             
             try:
-                self.progress.blotter += target.result
+                self.blotter_colour_index = (self.blotter_colour_index + 1) % len(BLOTTER_COLOURS)
+                self.progress.blotter += [
+                    (BLOTTER_COLOURS[self.blotter_colour_index], line)
+                    for line in target.result
+                ]
                 self.progress.blotter = self.progress.blotter[-MAX_LINES:]
             except AttributeError:
                 pass # optional attribute
@@ -295,9 +308,9 @@ class MinistryOfTruth:
                 line_image = MinistryOfTruth.parchment_font.render(line, True, (0,26,102))
                 self.screen.blit(line_image, pos)
 
-        for i, line in enumerate(self.model.progress.blotter):
+        for i, (colour, line) in enumerate(self.model.progress.blotter):
             pos = 20, 510 + i * 18
-            line_image = MinistryOfTruth.blotter_font.render(line, True,(255, 204, 102))
+            line_image = MinistryOfTruth.blotter_font.render(line, True, colour)
             self.screen.blit(line_image, pos)
 
         pygame.display.flip()

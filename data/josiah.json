@@ -27,7 +27,7 @@
       },
       {
         "condition": [],
-        "block": ["rest in peace", "dead"],
+        "block": ["rest in peace", "dead", "Anton"],
         "label": "Roof terrace",
         "time": [0, 10],
         "help": [
@@ -60,7 +60,7 @@
       },
       {
         "condition": ["Anton"],
-        "block": ["rest in peace", "dead"],
+        "block": ["rest in peace", "dead", "wounds", "Anton's room"],
         "label": "Rage!",
         "time": [0, 12],
         "help": [
@@ -76,7 +76,7 @@
       },
       {
         "condition": ["Anton"],
-        "block": ["rest in peace", "dead"],
+        "block": ["rest in peace", "dead", "Anton dead"],
         "label": "Caution",
         "time": [12,-1],
         "help": [
@@ -93,8 +93,8 @@
         "action": "plot"
       },
       {
-        "condition": ["Anton"],
-        "block": ["rest in peace"],
+        "condition": ["Anton", "Anton's room"],
+        "block": ["rest in peace", "Anton's room"],
         "label": "Attack",
         "time": [0, 12],
         "help": [
@@ -136,7 +136,7 @@
           "Despite your inner turmoil, you appear calm as you stroll out onto Pall Mall."
         ],
         "clues": [],
-        "action": "plot"
+        "action": "main.json"
       }
     ]
 }

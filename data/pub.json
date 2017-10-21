@@ -20,15 +20,15 @@
         ],
         "result": [
           "A discrete meeting in the disabled toilet",
-          "A barfly draws his own conclusions. How wrong, yet how right.",
           "The ecstatsy is shared, her blood heals you",
-          "You tip her generously. You know she needs it. London's hard on the poor."
+          "You tip her generously. You know she needs the money.",
+          "A barfly draws his own conclusions. How wrong he is, yet how right."
         ],
         "clues": ["-wounds"],
         "action": "plot"
       },
       {
-        "condition": ["academic paper"],
+        "condition": [],
         "block": ["pub conversation"],
         "label": "Eavesdrop",
         "time": [5, 15],
