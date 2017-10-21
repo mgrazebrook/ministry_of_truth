@@ -1,0 +1,36 @@
+{
+    "name": "",
+    "image": "",
+    "things": [
+    ],
+    "blotter" : [
+      ""
+    ],
+    "menu": [
+      {
+        "condition": [],
+        "block": [],
+        "label": "",
+        "time": [0, -1],
+        "help": [
+          ""
+        ],
+        "result": [
+          ""
+        ],
+        "clue": [""]
+      },
+      {
+        "label": "Quit (ESC)",
+        "time": [0, -1],
+        "help": [ "save and quit" ],
+        "action": "quit"
+      },
+      {
+        "label": "New game",
+        "time": [ 0, -1 ],
+        "help": [ "Start from the beginning" ],
+        "action": "restart"
+      }
+    ]
+}

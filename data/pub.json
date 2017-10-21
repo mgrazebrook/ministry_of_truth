@@ -1,0 +1,75 @@
+{
+    "name": "The Red Lion",
+    "image": "red_lion.png",
+    "things": [
+    ],
+    "blotter" : [
+      "Warm noise and welcome safety, scent of beer and bodies.",
+      "Jane is cleaning tables, her friend David's got the bar."
+    ],
+    "menu": [
+      {
+        "condition": ["wounds"],
+        "block": [],
+        "label": "Talk to Jane",
+        "time": [0, -1],
+        "help": [
+          "Your hunger rises as you see life's pulse at her neck.",
+          "Her blood will fully heal you and she'll give it freely."
+        ],
+        "result": [
+          "A discrete meeting in the disabled toilet",
+          "A barfly draws his own conclusions. How wrong, yet how right.",
+          "The ecstatsy is shared, her blood heals you",
+          "You tip her generously. You know she needs it."
+        ],
+        "clue": ["-wounds"]
+      },
+      {
+        "condition": ["academic paper"],
+        "block": ["pub conversation"],
+        "label": "Eavesdrop",
+        "time": [5, 15],
+        "help": [
+          "A group of geeks chatting. Beer and boasts flow freely.",
+          "Your ears prick up at the name 'Hector Turrion', a vampire"
+        ],
+        "result": [
+          "(Jason) Hector Turrion may be a hard bastard, but he's well connnected",
+          "(Jason) Whitehall Analytica would be nothing without him",
+          "(Sophie) He's the power behind the populist Right. You saw the Guardian article",
+          "(Sophie) He's electing faschists throughout Europe and America!",
+          "(Jason) No, he'd work for anyone. We'd rather work for anyone else!",
+          "(Jason) But work goes by word of mouth and we're proud of being the best",
+          "(Jason) even if we don't agree with the manefestos we're supporting",
+          "(Jason) Our political polling and analysis can swing a vote 10 points"
+        ],
+        "clue": ["pub conversation"]
+      },
+      {
+        "condition": ["academic paper", "pub conversation"],
+        "block": ["pub conversation"],
+        "label": "Join in",
+        "time": [5, 20],
+        "help": [
+          "Ask about the paper you found"
+        ],
+        "result": [
+          "(You) You're with Whitehall Analytica? The political data science firm?",
+          "(You) That's an impressive outfit! What do you think of Professor Weissman's paper",
+          "(You) on computational distortion of truth?",
+          "(Jason) Hey! We've done some amazing work on that!",
+          "(Jason) We just finished testing a new system. It's live tomorrow",
+          "You chat for a while but you're quickly out of your depth so you move on",
+          "But you did learn that the server room's in a disused underground station nearby."
+        ],
+        "clue": ["find the station"]
+      },
+      {
+        "label": "New game",
+        "time": [ 0, -1 ],
+        "help": [ "Start from the beginning" ],
+        "action": "restart"
+      }
+    ]
+}

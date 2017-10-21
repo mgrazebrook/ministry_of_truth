@@ -1,0 +1,114 @@
+{
+    "name": "Josiah's lodgings",
+    "image": "josiah.png",
+    "things": [
+    ],
+    "blotter" : [
+      "An agreeable evening awaits with your old friend Josiah.",
+      "He lives at the Travellers' Club, ancient haunt of explorers and spies",
+      "You pause at the door. Something's not right."
+    ],
+    "menu": [
+      {
+        "condition": [],
+        "label": "Knock",
+        "time": [0, -1],
+        "help": [
+          "Knock politely and wait"
+        ],
+        "result": [
+          "A terrible noise. You force the door.",
+          "Through blowing curtains, a shadowy figure flees over the terrae and is gone",
+          "Josiah's corpse lies on the floor, his blood drained"
+        ],
+        "clue": ["rest in peace"]
+      },
+      {
+        "condition": ["rest in peace"],
+        "label": "Contemplation",
+        "time": [0, -1],
+        "help": [
+          "The still of the night, of death,",
+          "all senses strained for the slightest clue"
+        ],
+        "result": [
+          "You're drawn to a printout on a shelf. An academic paper on lies. You sit and read",
+          "It seems lieing is hard: hard to keep the story straight.",
+          "The paper outlines a way to use artificial intelligence to maintain a set of lies."
+        ],
+        "clue": ["academic paper"]
+      },
+      {
+        "condition": ["Anton"],
+        "block": ["rest in peace"],
+        "label": "Rage!",
+        "time": [0, 12],
+        "help": [
+          "Draw on the beast within for extra strength. To the death!"
+        ],
+        "result": [
+          "Using your unnatural strength, the fight is short, brutal and lethally balanced.",
+          "You tear him apart. Your wounds are grave. His corpse fades to dusty wind.",
+          "Josiah's wardrobe replaces your torn clothes. Your appearance fades back to human."
+        ],
+        "clue": ["Anton dead", "wounds"]
+      },
+      {
+        "condition": ["Anton"],
+        "block": ["rest in peace"],
+        "label": "Attack",
+        "time": [0, 12],
+        "help": [
+          "To attack in human form would be suicide"
+        ],
+        "result": [
+          "Your enemy springs. The fight is short, brutal and one-sided.",
+          "Fighting in human form, you are torn apart. Hells fires welcome you."
+        ],
+        "clue": ["dead"]
+      },
+      {
+        "condition": ["Leave Josiah"],
+        "block": [],
+        "label": "Leave",
+        "time": [0, -1],
+        "help": [
+          "Best not to hang about. This would be hard to explain to the police."
+        ],
+        "result": [
+          "Despite your inner turmoil, you appear calm as you stroll out onto Pall Mall."
+        ],
+        "clue": []
+      },
+      {
+        "condition": [],
+        "block": ["Anton's letter"],
+        "label": "The desk",
+        "time": [0, -1],
+        "help": [
+          ""
+        ],
+        "result": [
+          "Ashes of a letter in the ash-tray.",
+          "Yet you work out its gist from the pen's faint imprint on the leather desk.",
+          "Josiah wrote to warn you of a plot to end truth, a computer of lies, that he must flee",
+          "IT TURNS ON TOMORROW"
+        ],
+        "clue": ["Anton's letter"]
+      },
+      {
+        "condition": [],
+        "block": ["rest in peace"],
+        "label": "Roof terrace",
+        "time": [0, 10],
+        "help": [
+          "His room overlooks the roof terrace.",
+          "You could peek through his window. This might annoy him."
+        ],
+        "result": [
+          "You see the vampire Anton drinking the last of Josiah's life"
+        ],
+        "clue": ["Anton"]
+      }
+    ]
+}

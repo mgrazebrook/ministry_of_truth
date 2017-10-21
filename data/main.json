@@ -1,0 +1,46 @@
+{
+    "name": "Ministry of Truth",
+    "image": "800px-Green_Park_and_St._James's_Park_London_from_1833_Schmollinger_map.jpg",
+    "things": [
+      {
+        "name": "Josia's rooms",
+        "location": [200,200],
+        "image": "josiah-2.jpg",
+        "grey_image": "josiah-2-grey.jpg",
+        "show": 1
+      }
+    ],
+    "blotter": [
+      "- Right click on a button for more information -",
+      "Gusts of wind blow autumn's leaves around your feet.",
+      "{hours_left} hours of night remain before dawn's searing light."
+    ],
+    "menu": [
+      {
+        "label": "Travellers Club",
+        "time": [0,-1],
+        "help": [
+          "You promised to visit your friend Josiah.",
+          "He's staying at the Travellers' Club,",
+          "famed haunt of spies and distinguished foreign visitors"
+        ],
+        "action": "josiah.json"
+      },
+      {
+        "condition": ["wounds"],
+        "label": "The Red Lion",
+        "time": [0,11],
+        "help": [
+          "A traditional boozer. A place to heal",
+          "Your friend Jane will give you blood to heal your wounds"
+        ],
+        "action": "pub.json"
+      },
+      {
+        "label": "New game",
+        "time": [ 0, -1 ],
+        "help": [ "Start from the beginning" ],
+        "action": "reset"
+      }
+    ]
+}
