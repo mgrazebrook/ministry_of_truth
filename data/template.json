@@ -31,7 +31,7 @@
         "label": "New game",
         "time": [ 0, -1 ],
         "help": [ "Start from the beginning" ],
-        "action": "restart"
+        "action": "reset"
       }
     ]
 }

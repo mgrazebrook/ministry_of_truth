@@ -1,0 +1,18 @@
+{
+    "name": "You are dead",
+    "image": "Buddhist_hell.jpg",
+    "things": [
+    ],
+    "blotter" : [
+      "You always knew your condition damned you.",
+      "Memories of your victims, feeling their terror, burn your soul"
+    ],
+    "menu": [
+      {
+        "label": "New game",
+        "time": [ 0, -1 ],
+        "help": [ "Start from the beginning" ],
+        "action": "reset"
+      }
+    ]
+}

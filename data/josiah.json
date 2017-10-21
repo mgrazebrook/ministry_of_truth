@@ -42,7 +42,7 @@
       },
       {
         "condition": ["rest in peace"],
-        "block": ["dead"],
+        "block": ["dead", "academic paper"],
         "label": "Contemplation",
         "time": [0, -1],
         "help": [
@@ -60,11 +60,28 @@
       },
       {
         "condition": ["Anton"],
+        "block": ["rest in peace", "Anton's room"],
+        "label": "Attack",
+        "time": [0, 12],
+        "help": [
+          "To attack in human form would be suicide"
+        ],
+        "result": [
+          "Your enemy springs. The fight is short, brutal and one-sided.",
+          "Fighting in human form, you are torn apart. Hells fires welcome you."
+        ],
+        "clues": ["dead"],
+        "action": "dead.json"
+      },
+      {
+        "condition": ["Anton"],
         "block": ["rest in peace", "dead", "wounds", "Anton's room"],
         "label": "Rage!",
         "time": [0, 12],
         "help": [
-          "Draw on the beast within for extra strength. To the death!"
+          "Draw on the beast within for extra strength. To the death!",
+          "The masquerade is everything. If humans see you in beast form,",
+          "you will be killed in a blood hunt."
         ],
         "result": [
           "Using your unnatural strength, the fight is short, brutal and lethally balanced.",
@@ -90,21 +107,6 @@
           "Your humanity ebbs, the beast is stronger, you own the night."
         ],
         "clues": ["Anton friendly", "Anton's room"],
-        "action": "plot"
-      },
-      {
-        "condition": ["Anton", "Anton's room"],
-        "block": ["rest in peace", "Anton's room"],
-        "label": "Attack",
-        "time": [0, 12],
-        "help": [
-          "To attack in human form would be suicide"
-        ],
-        "result": [
-          "Your enemy springs. The fight is short, brutal and one-sided.",
-          "Fighting in human form, you are torn apart. Hells fires welcome you."
-        ],
-        "clues": ["dead"],
         "action": "plot"
       },
       {

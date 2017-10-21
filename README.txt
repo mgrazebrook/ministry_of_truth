@@ -6,14 +6,7 @@ Team: Ministry of Truth
 Members: Michael Grazebrook
 
 
-DEPENDENCIES:
-
-You might need to install some of these before running the game:
-
-  Python:     http://www.python.org/
-  PyGame:     http://www.pygame.org/
-  PyOpenGL:   http://pyopengl.sf.net/
-
+DEPENDENCIES: pygame
 
 
 RUNNING THE GAME:
@@ -28,8 +21,8 @@ Othewise open a terminal / console and "cd" to the game directory and run:
 
 HOW TO PLAY THE GAME:
 
-Move the cursor around the screen with the mouse.
-
-
+The game tells a story. 
+Right click on a menu button for more information.
+Left click to take the action.
 
 LICENSE: MIT
