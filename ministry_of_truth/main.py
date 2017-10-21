@@ -18,7 +18,8 @@ import time
 
 
 DISPLAY_SIZE = 1024, 650
-
+FONT = "Sans" # Georgia
+MAX_LINES = 7
 
 def load_image(name, colorkey=None):
     fullname = os.path.join('data', name)
@@ -40,7 +41,7 @@ class Progress:
     The things which change in the model as the game progresses.
     """
     def __init__(self, current_game_map):
-        self.game_time = 0
+        self.game_time = 10
         self.wounded = False
         self.clues = set()
         self.set_game_map(current_game_map)
@@ -55,8 +56,12 @@ class Progress:
             for thing in self.game_map.scene.things 
             if thing.show
         ]
-        self.blotter = list(game_map.scene.blotter)
+        self.blotter = [
+            line.format(hours_left = self.game_time)
+            for line in game_map.scene.blotter
+        ]
         self.stale = True
+        self.game_time -= 1
 
     def update(self):
         pass # TODO: Enable/disable menu items
@@ -86,13 +91,28 @@ class Model:
             self.progress = Progress(self.game_map)
         elif action[-5:] == ".json":
             self.progress.set_game_map(GameMap(action))
+        elif action == "plot":
+            try:
+                for clue in target.clues:
+                    if clue[0] == '-':
+                        self.progress.clues.remove(clue[1:])
+                    else:
+                        self.progress.clues.add(clue)
+                    self.progress.stale = True
+            except AttributeError:
+                pass # optional attribute
+            
+            try:
+                self.progress.blotter += target.result
+                self.progress.blotter = self.progress.blotter[-MAX_LINES:]
+            except AttributeError:
+                pass # optional attribute
 
     def right_action(self, target, kind):
         """
         Help text
         """
         self.progress.help = target.help
-        print(target.help)
 
     def clear(self):
         self.progress.help = None
@@ -129,7 +149,7 @@ class MenuItem(pygame.sprite.Sprite):
         
         if MenuItem.base_image is None:
             MenuItem.base_image, MenuItem.base_rect = load_image("blue_button.png", (255,255,255))
-            MenuItem.font = pygame.font.SysFont('Sans', 30)
+            MenuItem.font = pygame.font.SysFont(FONT, 30)
 
         self.image = MenuItem.base_image.convert()
         self.rect = self.image.get_rect()
@@ -168,6 +188,12 @@ class Menu(pygame.sprite.Group):
         scene = model.progress.game_map.scene
         item_height = int(self.rect.height / 7) + MARGIN
         for i, button_spec in enumerate(scene.menu):
+            if (hasattr(button_spec, "condition") 
+                and not model.progress.clues.issuperset(button_spec.condition)):
+                continue
+            if (hasattr(button_spec, "block") 
+                and not model.progress.clues.isdisjoint(button_spec.block)):
+                continue
             x = self.rect.left 
             y = self.rect.top + i * item_height
             self.add(MenuItem(model, button_spec, x, y))
@@ -200,6 +226,10 @@ class Menu(pygame.sprite.Group):
 
 class MinistryOfTruth:
     save_file_name = "save/save.pickle"
+    parchment = None
+    parchment_rect = None
+    parchment_font = None
+    blotter_font = None
 
     def __init__(self):
         pygame.init()
@@ -212,6 +242,11 @@ class MinistryOfTruth:
         except:
             self.reset()
         self.menu = Menu(self.model, self.screen)
+
+        if self.parchment is None:
+            MinistryOfTruth.parchment, MinistryOfTruth.parchment_rect = load_image("old-parchment.jpg")
+            MinistryOfTruth.parchment_font = pygame.font.SysFont(FONT, 20, italic=True)
+            MinistryOfTruth.blotter_font = pygame.font.SysFont(FONT, 18)
 
     def reset(self):
         try:
@@ -229,7 +264,7 @@ class MinistryOfTruth:
                 return False
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    return False
+                    self.model.progress.help = None
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 self.menu.onclick(event.pos, event.button==1)
         return True
@@ -241,12 +276,30 @@ class MinistryOfTruth:
 
 
     def draw(self):
-        if self.model.progress.stale:
+        progress = self.model.progress
+
+        if progress.stale:
             pygame.display.set_caption(self.model.get_level_name())
-            self.model.progress.stale = False
+            progress.stale = False
+            self.menu = Menu(self.model, self.screen)
+
         self.screen.fill((0,0,0))
         self.screen.blit(self.model.get_image(), (0,0))
         self.menu.draw()
+
+        if progress.help:
+            parchment_pos = (150,95)
+            self.screen.blit(self.parchment, parchment_pos)
+            for i, line in enumerate(progress.help):
+                pos = parchment_pos[0] + 20, parchment_pos[1] + 40 + i * 20
+                line_image = MinistryOfTruth.parchment_font.render(line, True, (0,26,102))
+                self.screen.blit(line_image, pos)
+
+        for i, line in enumerate(self.model.progress.blotter):
+            pos = 20, 510 + i * 18
+            line_image = MinistryOfTruth.blotter_font.render(line, True,(255, 204, 102))
+            self.screen.blit(line_image, pos)
+
         pygame.display.flip()
 
 

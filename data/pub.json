@@ -5,7 +5,8 @@
     ],
     "blotter" : [
       "Warm noise and welcome safety, scent of beer and bodies.",
-      "Jane is cleaning tables, her friend David's got the bar."
+      "Jane is cleaning tables, David's woking the bar.",
+      "The usual evening crowd, no threats you can see."
     ],
     "menu": [
       {
@@ -21,9 +22,10 @@
           "A discrete meeting in the disabled toilet",
           "A barfly draws his own conclusions. How wrong, yet how right.",
           "The ecstatsy is shared, her blood heals you",
-          "You tip her generously. You know she needs it."
+          "You tip her generously. You know she needs it. London's hard on the poor."
         ],
-        "clue": ["-wounds"]
+        "clues": ["-wounds"],
+        "action": "plot"
       },
       {
         "condition": ["academic paper"],
@@ -44,7 +46,8 @@
           "(Jason) even if we don't agree with the manefestos we're supporting",
           "(Jason) Our political polling and analysis can swing a vote 10 points"
         ],
-        "clue": ["pub conversation"]
+        "clues": ["pub conversation"],
+        "action": "plot"
       },
       {
         "condition": ["academic paper", "pub conversation"],
@@ -63,7 +66,17 @@
           "You chat for a while but you're quickly out of your depth so you move on",
           "But you did learn that the server room's in a disused underground station nearby."
         ],
-        "clue": ["find the station"]
+        "clues": ["find the station"],
+        "action": "plot"
+      },
+      {
+        "label": "Leave",
+        "time": [0,-1],
+        "help": [
+          "Time to get going.",
+          "This will return you to the main map"
+        ],
+        "action": "main.json"
       },
       {
         "label": "New game",

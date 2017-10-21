@@ -11,6 +11,7 @@
     "menu": [
       {
         "condition": [],
+        "block": ["dead", "rest in peace", "Anton"],
         "label": "Knock",
         "time": [0, -1],
         "help": [
@@ -21,10 +22,27 @@
           "Through blowing curtains, a shadowy figure flees over the terrae and is gone",
           "Josiah's corpse lies on the floor, his blood drained"
         ],
-        "clue": ["rest in peace"]
+        "clues": ["rest in peace", "Anton's room"],
+        "action": "plot"
+      },
+      {
+        "condition": [],
+        "block": ["rest in peace", "dead"],
+        "label": "Roof terrace",
+        "time": [0, 10],
+        "help": [
+          "His room overlooks the roof terrace.",
+          "You could peek through his window. This might annoy him."
+        ],
+        "result": [
+          "You see the vampire Anton drinking the last of Josiah's life"
+        ],
+        "clues": ["Anton"],
+        "action": "plot"
       },
       {
         "condition": ["rest in peace"],
+        "block": ["dead"],
         "label": "Contemplation",
         "time": [0, -1],
         "help": [
@@ -34,13 +52,15 @@
         "result": [
           "You're drawn to a printout on a shelf. An academic paper on lies. You sit and read",
           "It seems lieing is hard: hard to keep the story straight.",
-          "The paper outlines a way to use artificial intelligence to maintain a set of lies."
+          "The paper outlines a way to use artificial intelligence to maintain a set of lies.",
+          "This can be used to control the media in a post-truth world."
         ],
-        "clue": ["academic paper"]
+        "clues": ["academic paper"],
+        "action": "plot"
       },
       {
         "condition": ["Anton"],
-        "block": ["rest in peace"],
+        "block": ["rest in peace", "dead"],
         "label": "Rage!",
         "time": [0, 12],
         "help": [
@@ -51,7 +71,26 @@
           "You tear him apart. Your wounds are grave. His corpse fades to dusty wind.",
           "Josiah's wardrobe replaces your torn clothes. Your appearance fades back to human."
         ],
-        "clue": ["Anton dead", "wounds"]
+        "clues": ["Anton dead", "wounds", "Anton's room"],
+        "action": "plot"
+      },
+      {
+        "condition": ["Anton"],
+        "block": ["rest in peace", "dead"],
+        "label": "Caution",
+        "time": [12,-1],
+        "help": [
+          "Avoid a fight. Let Anton leave."
+        ],
+        "result": [
+          "(Anton) You are wise not to intervene. I'm sorry for your friend.",
+          "(Anton) But he knew too much. Maybe some day you'll join us.",
+          "The vampire leaves by the window, his form fading into the shadows.",
+          "You harden your heart to Josiah's death. A necessarily evil.",
+          "Your humanity ebbs, the beast is stronger, you own the night."
+        ],
+        "clues": ["Anton friendly", "Anton's room"],
+        "action": "plot"
       },
       {
         "condition": ["Anton"],
@@ -65,24 +104,12 @@
           "Your enemy springs. The fight is short, brutal and one-sided.",
           "Fighting in human form, you are torn apart. Hells fires welcome you."
         ],
-        "clue": ["dead"]
+        "clues": ["dead"],
+        "action": "plot"
       },
       {
-        "condition": ["Leave Josiah"],
-        "block": [],
-        "label": "Leave",
-        "time": [0, -1],
-        "help": [
-          "Best not to hang about. This would be hard to explain to the police."
-        ],
-        "result": [
-          "Despite your inner turmoil, you appear calm as you stroll out onto Pall Mall."
-        ],
-        "clue": []
-      },
-      {
-        "condition": [],
-        "block": ["Anton's letter"],
+        "condition": ["Anton's room"],
+        "block": ["Anton's letter", "dead"],
         "label": "The desk",
         "time": [0, -1],
         "help": [
@@ -92,23 +119,24 @@
           "Ashes of a letter in the ash-tray.",
           "Yet you work out its gist from the pen's faint imprint on the leather desk.",
           "Josiah wrote to warn you of a plot to end truth, a computer of lies, that he must flee",
-          "IT TURNS ON TOMORROW"
+          "IT STARTS TOMORROW!"
         ],
-        "clue": ["Anton's letter"]
+        "clues": ["Anton's letter"],
+        "action": "plot"
       },
       {
-        "condition": [],
-        "block": ["rest in peace"],
-        "label": "Roof terrace",
-        "time": [0, 10],
+        "condition": ["Anton's letter"],
+        "block": ["dead"],
+        "label": "Leave",
+        "time": [0, -1],
         "help": [
-          "His room overlooks the roof terrace.",
-          "You could peek through his window. This might annoy him."
+          "Best not to hang about. This would be hard to explain to the police."
         ],
         "result": [
-          "You see the vampire Anton drinking the last of Josiah's life"
+          "Despite your inner turmoil, you appear calm as you stroll out onto Pall Mall."
         ],
-        "clue": ["Anton"]
+        "clues": [],
+        "action": "plot"
       }
     ]
 }

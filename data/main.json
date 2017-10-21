@@ -1,6 +1,6 @@
 {
     "name": "Ministry of Truth",
-    "image": "800px-Green_Park_and_St._James's_Park_London_from_1833_Schmollinger_map.jpg",
+    "image": "main_map.jpg",
     "things": [
       {
         "name": "Josia's rooms",
@@ -11,7 +11,8 @@
       }
     ],
     "blotter": [
-      "- Right click on a button for more information -",
+      "Right click on a button for more information",
+      "",
       "Gusts of wind blow autumn's leaves around your feet.",
       "{hours_left} hours of night remain before dawn's searing light."
     ],
